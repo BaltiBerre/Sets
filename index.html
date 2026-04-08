@@ -10,6 +10,8 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html, body { min-height: 100%; }
+
     body {
       background: #f5f2ed;
       font-family: 'Inter', system-ui, sans-serif;
@@ -18,16 +20,39 @@
       display: flex;
       justify-content: center;
       padding: 3.5rem 1.5rem 5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: -10%;
+      width: 120%;
+      height: 120%;
+      background-image: url('image.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.13;
+      animation: kenburns 22s ease-in-out infinite alternate;
+      z-index: 0;
+      will-change: transform;
+    }
+
+    @keyframes kenburns {
+      0%   { transform: scale(1)    translateX(0%)    translateY(0%); }
+      33%  { transform: scale(1.06) translateX(-1.5%) translateY(1%); }
+      66%  { transform: scale(1.04) translateX(1%)    translateY(-1.5%); }
+      100% { transform: scale(1.08) translateX(-1%)   translateY(0.5%); }
     }
 
     .container {
       width: 100%;
       max-width: 480px;
+      position: relative;
+      z-index: 1;
     }
 
-    header {
-      margin-bottom: 2.5rem;
-    }
+    header { margin-bottom: 2.5rem; }
 
     h1 {
       font-size: 13px;
@@ -52,13 +77,9 @@
       margin: 1.75rem 0 2.25rem;
     }
 
-    .set-list {
-      list-style: none;
-    }
+    .set-list { list-style: none; }
 
-    .set-list li:first-child a {
-      border-top: 0.5px solid #d4cfc7;
-    }
+    .set-list li:first-child a { border-top: 0.5px solid #d4cfc7; }
 
     .set-list a {
       display: flex;
@@ -72,9 +93,7 @@
       transition: opacity 0.15s ease;
     }
 
-    .set-list a:hover {
-      opacity: 0.45;
-    }
+    .set-list a:hover { opacity: 0.45; }
 
     .set-name {
       font-size: 14px;
@@ -97,11 +116,7 @@
       letter-spacing: 0.03em;
     }
 
-    .icon {
-      width: 15px;
-      height: 15px;
-      opacity: 0.45;
-    }
+    .icon { width: 15px; height: 15px; opacity: 0.45; }
 
     footer {
       margin-top: 2.75rem;
@@ -113,6 +128,8 @@
   </style>
 </head>
 <body>
+  <div class="bg"></div>
+
   <div class="container">
     <header>
       <h1>Properly Hydrated</h1>
@@ -128,12 +145,11 @@
           - href: the YouTube or SoundCloud URL
           - .set-name: title of the set
           - .set-date: month + year (e.g. "Mar 2026")
-          - inside .icon use the YouTube svg OR SoundCloud svg (both are below)
         Paste the new <li> at the top of the list so newest is first.
       -->
 
       <li>
-        <a href="https://www.youtube.com/watch?v=fX7_dKXz55c&t=3965s" target="_blank" rel="noopener">
+        <a href="https://youtu.be/fX7_dKXz55c" target="_blank" rel="noopener">
           <span class="set-name">Balti b2b Roman — house set</span>
           <span class="set-meta">
             <span class="set-date">Mar 2026</span>
@@ -145,7 +161,7 @@
       </li>
 
       <li>
-        <a href="https://www.youtube.com/watch?v=uIEn9UNWSLI&t=3131s" target="_blank" rel="noopener">
+        <a href="https://youtu.be/uIEn9UNWSLI" target="_blank" rel="noopener">
           <span class="set-name">Maximum Groove w/ Daimei, Balti — Hi-Note Radio</span>
           <span class="set-meta">
             <span class="set-date">Mar 2026</span>
